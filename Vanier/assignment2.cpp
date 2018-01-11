@@ -15,34 +15,20 @@ void isGameOver(char Board[][COLUMNS]);
 
 void initializeBoard(char Board[][COLUMNS])
 {
-
 	Board[ROWS][COLUMNS];
-
-
 	for (int i = 0; i < 5; i++)
-	{
-		
-			
+	{	
 			for(int j = 0; j < 5; j++)
-		{
-			
-			Board[i][j] = '-';
-			
-		}
-		
-		
+		{		
+			Board[i][j] = '-';		
+		}		
 	}
 }
 
-	
-
 void displayBoard(char Board[][COLUMNS])
 {
-
 	ofstream out_stream;
-
 	out_stream.open("result.txt");
-	
 	cout << "   0 1 2 3 4" << endl;
 	cout << "  -----------" << endl;
 
@@ -73,18 +59,14 @@ void isInputValid(char Board[][COLUMNS])
 	srand(time(0));
 	int firstCord, SecCord;
 
-	
 	for (int t= 0; t < 25; t++)
 	{
-	
 		int randnum1 = (rand() % 5);
 		int randnum2 = (rand() % 5);
 		
-
 		if (t == 12)
 		{
 			cout << " Unfortunately no one wins " << endl;
-			
 			system("pause");
 			exit(1);
 		}
@@ -115,10 +97,7 @@ void isInputValid(char Board[][COLUMNS])
 
 
 			displayBoard(Board);
-			isGameOver(Board);
-		
-	
-	
+			isGameOver(Board);		
 	}
 
 }
@@ -139,13 +118,10 @@ void isBoxFree(char Board[][COLUMNS], int &firstCord, int &SecCord)
 void isBoxFree2(char Board[][COLUMNS], int &randnum1, int &randnum2, int& firstCord, int& SecCord)
 {
 	while ((Board[randnum1][randnum2] == 'H') || (Board[randnum1][randnum2] == 'P'))
-	{
-		
+	{	
 		randnum1 = rand() % 5;
-		randnum2 = rand() % 5;
-			
+		randnum2 = rand() % 5;		
 	}
-
 }
 
 
@@ -162,7 +138,6 @@ void isGameOver(char Board[][COLUMNS])
 		exit(1);
 	}
 
-	
 	if ((Board[0][0] == 'P' && Board[1][1] == 'P' && Board[2][2] == 'P' && Board[3][3] == 'P' && Board[4][4] == 'P')
 		|| (Board[0][4] == 'P' && Board[1][3] == 'P' && Board[2][2] == 'P' && Board[3][1] == 'P' && Board[4][0] == 'P')
 		|| (Board[0][0] == 'P' && Board[0][1] == 'P' && Board[0][2] == 'P' && Board[0][3] == 'P' && Board[1][0] == 'P'
